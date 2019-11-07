@@ -44,6 +44,7 @@ class TVShowsContainer extends Component {
   }
 
   handleChange = event => {
+    this.state.category = event.target.value
     this.fetchData(event.target.value)
   };
 

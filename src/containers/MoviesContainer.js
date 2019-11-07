@@ -7,7 +7,8 @@ import Movies from '../components/Movies'
 
 class MoviesContainer extends Component {
   state = {
-    recipes: MOVIES
+    recipes: MOVIES,
+    recipe: ""
   }
 
   // componentDidMount() {

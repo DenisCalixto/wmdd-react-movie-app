@@ -13,17 +13,17 @@ const getStyles = makeStyles(theme => ({
 
 const MovieCard = props => {
   const classes = getStyles()
-  const { id, title, imageUrl, publisher } = props
+  const { id, title, release_date, poster_path } = props
   // Card, CardHeader and CardMedia are Material UI classes
   return (
     <Card key={id}>
       <CardHeader
         title={title}
-        subheader={publisher}
+        subheader={release_date}
       />
       <CardMedia
         className={classes.media}
-        image={imageUrl}
+        image={poster_path}
         title={title}
       />
     </Card>

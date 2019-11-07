@@ -15,16 +15,16 @@ const Movies = (props) => {
   return (
     <div className='container'>
       <Grid container className={classes.root} spacing={5}>
-        {props.recipes.map(recipe => {
-          const { recipe_id, title, image_url, publisher } = recipe
+        {props.recipes.map(movie => {
+          const { id, title, release_date, poster_path } = movie
           return (
             <Grid item xs={3}>
               <MovieCard
-                key={recipe_id}
-                id={recipe_id}
+                key={id}
+                id={id}
                 title={title}
-                imageUrl={image_url}
-                publisher={publisher}
+                poster_path={poster_path}
+                release_date={release_date}
               />
             </Grid>
           )

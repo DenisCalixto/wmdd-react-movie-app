@@ -1,6 +1,8 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/styles'
+import { POSTER_IMAGE_BASE_URL } from '../config/api_config'
+
 import MovieCard from './MovieCard'
 
 const getStyles = makeStyles(theme => ({
@@ -23,7 +25,7 @@ const Movies = (props) => {
                 key={movie_id}
                 id={movie_id}
                 title={title}
-                poster_path={poster_path}
+                poster_path={POSTER_IMAGE_BASE_URL + poster_path}
                 release_date={release_date}
               />
             </Grid>

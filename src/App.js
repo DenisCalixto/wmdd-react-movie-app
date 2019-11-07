@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <h1 className='App-title'>React Movies App</h1>
       </header>
-      <MoviesContainer />
+      <MoviesContainer category={"now_playing"} />
     </div>
   )
 }

@@ -1,13 +1,14 @@
 import axios from 'axios'
 
-import { API_KEY, BASE_URL, MOVIES_URL } from '../config/api_config'
+import { MOVIES_URL } from '../config/api_config'
 
 export const getMovies = async (category) => {
-  const url = BASE_URL
+  const url = MOVIES_URL.replace("{CATEGORY}",category)
+  //console.log(url)
 
   try {
-    const response = await axios.get(MOVIES_URL)
-    console.log(response)
+    const response = await axios.get(url)
+    //console.log(response)
     return response.data.results
   } catch (error) {
     throw error

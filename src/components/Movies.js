@@ -16,12 +16,12 @@ const Movies = (props) => {
     <div className='container'>
       <Grid container className={classes.root} spacing={5}>
         {props.movies.map(movie => {
-          const { id, title, release_date, poster_path } = movie
+          const { movie_id, title, release_date, poster_path } = movie
           return (
             <Grid item xs={3}>
               <MovieCard
-                key={id}
-                id={id}
+                key={movie_id}
+                id={movie_id}
                 title={title}
                 poster_path={poster_path}
                 release_date={release_date}

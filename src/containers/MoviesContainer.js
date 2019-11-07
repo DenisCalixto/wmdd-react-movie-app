@@ -8,6 +8,11 @@ class MoviesContainer extends Component {
     category: ""
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {category: props.category, movies:[]};
+  }
+
   componentDidMount() {
     const { category } = this.state
     this.fetchData(category)

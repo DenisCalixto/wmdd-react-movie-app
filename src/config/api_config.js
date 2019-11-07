@@ -1,5 +1,52 @@
-export const API_KEY = '7f2bead4563a76e92a7d766a2b5c9140'
-export const BASE_URL = "https://www.food2fork.com/api/search"
+export const API_KEY = '6fc1c6073b6158d7fcc05774728210d6'
+export const BASE_URL = "https://api.themoviedb.org/3/"
+export const MOVIES_URL = BASE_URL + "movie/now_playing?api_key=" + API_KEY
+
+export const MOVIES = [
+  {
+    popularity: "BBC Good Food",
+    release_date: "http://food2fork.com/view/2166ae",
+    title: "Home-style chicken curry",
+    overview: "http://www.bbcgoodfood.com/recipes/1993658/homestyle-chicken-curry",
+    id: 2166,
+    poster_path: "http://static.food2fork.com/1993658_MEDIUM5be8.jpg"
+  },
+  {
+    popularity: "Epicurious",
+    release_date: "http://food2fork.com/view/20b18f",
+    title: "Thai Chicken Curry",
+    overview: "http://www.epicurious.com/recipes/food/views/Thai-Chicken-Curry-51140410",
+    id: 2018,
+    poster_path: "http://static.food2fork.com/51140410724e.jpg"
+  },
+  {
+    popularity: "BBC Good Food",
+    release_date: "http://food2fork.com/view/2484af",
+    title: "Sweet potato &amp; chicken curry",
+    overview: "http://www.bbcgoodfood.com/recipes/313610/sweet-potato-and-chicken-curry",
+    id: 2484,
+    poster_path: "http://static.food2fork.com/313610_MEDIUM594c.jpg"
+  },
+  {
+    popularity: "Bon Appetit",
+    release_date: "http://food2fork.com/view/48805",
+    title: "Thai Chicken Curry",
+    overview: "http://www.bonappetit.com/recipes/quick-recipes/2013/01/thai-chicken-curry",
+    id: 48805,
+    poster_path: "http://static.food2fork.com/thaichickencurry646dd16.jpg"
+  }
+]
+
+export const RECIPE =   {
+  popularity: "BBC Good Food",
+  release_date: "http://food2fork.com/view/e3dbee",
+  title: "Nutty chicken curry",
+  overview: "http://www.bbcgoodfood.com/recipes/11753/nutty-chicken-curry",
+  id: "e3dbee",
+  poster_path: "http://static.food2fork.com/11753_MEDIUM5b54.jpg",
+  "social_rank": 93.47139844320527,
+  "popularity_url": "http://www.bbcgoodfood.com"
+}
 
 // export const MOVIES = [
 //          {
@@ -343,50 +390,3 @@ export const BASE_URL = "https://www.food2fork.com/api/search"
 //            release_date: "2019-11-01"
 //          }
 //        ]
-
-
-export const MOVIES = [
-  {
-    popularity: "BBC Good Food",
-    release_date: "http://food2fork.com/view/2166ae",
-    title: "Home-style chicken curry",
-    overview: "http://www.bbcgoodfood.com/recipes/1993658/homestyle-chicken-curry",
-    id: 2166,
-    poster_path: "http://static.food2fork.com/1993658_MEDIUM5be8.jpg"
-  },
-  {
-    popularity: "Epicurious",
-    release_date: "http://food2fork.com/view/20b18f",
-    title: "Thai Chicken Curry",
-    overview: "http://www.epicurious.com/recipes/food/views/Thai-Chicken-Curry-51140410",
-    id: 2018,
-    poster_path: "http://static.food2fork.com/51140410724e.jpg"
-  },
-  {
-    popularity: "BBC Good Food",
-    release_date: "http://food2fork.com/view/2484af",
-    title: "Sweet potato &amp; chicken curry",
-    overview: "http://www.bbcgoodfood.com/recipes/313610/sweet-potato-and-chicken-curry",
-    id: 2484,
-    poster_path: "http://static.food2fork.com/313610_MEDIUM594c.jpg"
-  },
-  {
-    popularity: "Bon Appetit",
-    release_date: "http://food2fork.com/view/48805",
-    title: "Thai Chicken Curry",
-    overview: "http://www.bonappetit.com/recipes/quick-recipes/2013/01/thai-chicken-curry",
-    id: 48805,
-    poster_path: "http://static.food2fork.com/thaichickencurry646dd16.jpg"
-  }
-]
-
-export const RECIPE =   {
-  popularity: "BBC Good Food",
-  release_date: "http://food2fork.com/view/e3dbee",
-  title: "Nutty chicken curry",
-  overview: "http://www.bbcgoodfood.com/recipes/11753/nutty-chicken-curry",
-  id: "e3dbee",
-  poster_path: "http://static.food2fork.com/11753_MEDIUM5b54.jpg",
-  "social_rank": 93.47139844320527,
-  "popularity_url": "http://www.bbcgoodfood.com"
-}

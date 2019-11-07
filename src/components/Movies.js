@@ -15,7 +15,7 @@ const Movies = (props) => {
   return (
     <div className='container'>
       <Grid container className={classes.root} spacing={5}>
-        {props.recipes.map(movie => {
+        {props.movies.map(movie => {
           const { id, title, release_date, poster_path } = movie
           return (
             <Grid item xs={3}>

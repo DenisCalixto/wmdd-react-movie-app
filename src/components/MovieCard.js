@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/styles'
+import { CardContent } from '@material-ui/core'
 
 const getStyles = makeStyles(theme => ({
   media: {
@@ -20,6 +21,10 @@ const MovieCard = props => {
       <CardHeader
         title={title}
         subheader={release_date}
+      />
+      <CardContent 
+        title={id}
+        subheader={poster_path}
       />
       <CardMedia
         className={classes.media}

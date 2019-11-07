@@ -1,19 +1,14 @@
 import axios from 'axios'
 
-import { API_KEY, BASE_URL } from '../config/api_config'
+import { API_KEY, BASE_URL, MOVIES_URL } from '../config/api_config'
 
-export const getMovies = async (recipeName) => {
+export const getMovies = async (category) => {
   const url = BASE_URL
 
   try {
-    const response = await axios.get(url, {
-      params: {
-        key: API_KEY,
-        q: recipeName
-      }
-    })
+    const response = await axios.get(MOVIES_URL)
     console.log(response)
-    return response.data.recipes
+    return response.data.results
   } catch (error) {
     throw error
   }

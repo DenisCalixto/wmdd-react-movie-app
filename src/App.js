@@ -3,6 +3,7 @@ import './App.css';
 import MoviesContainer from './containers/MoviesContainer'
 import TVShowsContainer from './containers/TVShowsContainer'
 import SearchForm from './components/SearchForm';
+import SearchResultContainer from './containers/SearchResultContainer';
 
 import { searchContent } from './services/api'
 
@@ -13,14 +14,23 @@ class App extends Component {
   category = ""
   searchText = ""
 
+  constructor(props) {
+     super(props);
+    //  this.state = {
+    //    search_results: []
+    //  }
+     this.searchResultRef = React.createRef()
+  }
+
   handleSearch = () => {
-    console.log(this.category)
-    console.log(this.searchText)
+    // console.log(this.category)
+    // console.log(this.searchText)
     searchContent(this.category, this.searchText).then(searchResponse => {
-      console.log(searchResponse)
       this.setState({
         search_results: searchResponse
       })
+      // console.log(this.state.search_results)
+      this.searchResultRef.current.updateSearchResults(this.state.search_results)
     })
   }
 
@@ -48,6 +58,10 @@ class App extends Component {
           onInputChange={this.handleSearchText}
           onChangeCategory={this.handleCategoryChange}
           onSearch={this.handleSearch}
+        />
+        <SearchResultContainer 
+          ref={this.searchResultRef} 
+          search_results={this.state.search_results} 
         />
         <MoviesContainer category={"now_playing"} />
         <TVShowsContainer category={"top_rated"} />

@@ -16,7 +16,7 @@ import SearchResults from '../components/SearchResults'
 
 class SearchResultContainer extends Component {
   state = {
-    search_results: []
+    search_results: null
   }
 
 //   constructor(props) {
@@ -50,12 +50,31 @@ class SearchResultContainer extends Component {
 
   render() {
       //console.log(this.state.search_results)
-    const { search_results } = this.state
-    return (
-      <div>
-        <SearchResults search_results={search_results} />
-      </div>
-    );
+    const { search_results } = this.state;
+    
+    if (search_results) {
+      if (search_results.length > 0) {
+        return (
+          <div>
+            <SearchResults search_results={search_results} />
+          </div>
+        );
+      }
+      else {
+        return (
+          <div>
+            <p>No result found for the search query</p>
+          </div>
+        );
+      }
+    }
+    else {
+      return (
+        <div>
+          <p>Please initiate a search</p>
+        </div>
+      );
+    }
   }
 }
 

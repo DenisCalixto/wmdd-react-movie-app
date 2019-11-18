@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/styles'
 import { POSTER_IMAGE_BASE_URL } from '../config/api_config'
 
-import TVShowCard from './TVShowCard'
+import ShowCard from './ShowCard'
 
 const getStyles = makeStyles(theme => ({
   root: {
@@ -20,8 +20,8 @@ const TVShows = (props) => {
         {props.tv_shows.map(tv_show => {
           const { id, name, first_air_date, popularity, overview, poster_path } = tv_show
           return (
-            <Grid item xs={3}>
-              <TVShowCard
+            <Grid item xs={12}>
+              <ShowCard
                 key={id}
                 id={id}
                 title={name}

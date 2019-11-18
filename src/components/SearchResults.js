@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/styles'
 import { POSTER_IMAGE_BASE_URL } from '../config/api_config'
 
-import SearchResultCard from './SearchResultCard'
+import ShowCard from './ShowCard'
 
 const getStyles = makeStyles(theme => ({
   root: {
@@ -20,8 +20,8 @@ const SearchResults = (props) => {
         {props.search_results.map(search_result => {
           const { id, title, release_date, popularity, overview, poster_path } = search_result
           return (
-            <Grid item xs={3}>
-              <SearchResultCard
+            <Grid item xs={12}>
+              <ShowCard
                 key={id}
                 id={id}
                 title={title}

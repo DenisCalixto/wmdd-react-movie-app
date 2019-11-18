@@ -61,6 +61,7 @@ class TVShowsContainer extends Component {
             id="demo-simple-select-outlined"
             value={this.state.category}
             onChange={this.handleChange}
+            className='combo'
           >
             <MenuItem value={'airing_today'}>airing_today</MenuItem>
             <MenuItem value={'on_the_air'}>on_the_air</MenuItem>

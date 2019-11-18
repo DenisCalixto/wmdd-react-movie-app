@@ -9,16 +9,6 @@ import Select from '@material-ui/core/Select';
 import { getMovies } from '../services/api'
 import Movies from '../components/Movies'
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
 class MoviesContainer extends Component {
   state = {
     movies: [],
@@ -29,6 +19,20 @@ class MoviesContainer extends Component {
     super(props);
     this.state.category = props.category;
   }
+
+  useStyles = makeStyles(theme => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+    inputLabel: {
+      color: 'red',
+      backgroundColor: 'white',
+    },
+  }));
 
   componentDidMount() {
     const { category } = this.state
@@ -57,14 +61,17 @@ class MoviesContainer extends Component {
     return (
       <div>
         <FormControl variant="outlined">
-          <InputLabel id="demo-simple-select-outlined-label">
+          <InputLabel 
+            shrink id="categoryLabelId"
+            className={this.useStyles.inputLabel}>
             Category
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
+            labelId="categoryLabelId"
             id="demo-simple-select-outlined"
             value={this.state.category}
             onChange={this.handleChange}
+            className='combo'
           >
             <MenuItem value={'now_playing'}>now_playing</MenuItem>
             <MenuItem value={'popular'}>popular</MenuItem>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -44,19 +43,12 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
 class App extends Component {
   state = {
     search_results: [],
     value: 0,
   }
-  category = ""
+  search_category = "movie"
   searchText = ""
 
   constructor(props) {
@@ -74,7 +66,7 @@ class App extends Component {
   handleSearch = () => {
     // console.log(this.category)
     // console.log(this.searchText)
-    searchContent(this.category, this.searchText).then(searchResponse => {
+    searchContent(this.search_category, this.searchText).then(searchResponse => {
       this.setState({
         search_results: searchResponse
       })
@@ -97,7 +89,7 @@ class App extends Component {
     // this.setState({
       //   [key]: value
       // })
-    this.category = value
+    this.search_category = value
   }
 
   render() {
@@ -110,31 +102,33 @@ class App extends Component {
           onInputChange={this.handleSearchText}
           onChangeCategory={this.handleCategoryChange}
           onSearch={this.handleSearch}
-          category={"movie"}
+          category={this.search_category}
         />
-        <AppBar position="static">
-          <Tabs value={this.state.value} 
-            onChange={this.handleChange} 
-            variant="fullWidth"
-            centered
-            aria-label="simple tabs example">
-            <Tab label="MOVIES" {...a11yProps(0)} />
-            <Tab label="SEARCH RESULTS" {...a11yProps(1)} />
-            <Tab label="TV SHOWS" {...a11yProps(2)} />
-          </Tabs>
-        </AppBar>
-        <TabPanel value={this.state.value} index={0}>
-          <MoviesContainer category={"now_playing"} />
-        </TabPanel>
-        <TabPanel value={this.state.value} index={1}>
-          <SearchResultContainer 
-            ref={this.searchResultRef} 
-            search_results={this.state.search_results}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.value} index={2}>
-          <TVShowsContainer category={"top_rated"} />
-        </TabPanel>
+        <div className='tab-container'>
+          <AppBar position="static">
+            <Tabs value={this.state.value} 
+              onChange={this.handleChange} 
+              variant="fullWidth"
+              centered
+              aria-label="simple tabs example">
+              <Tab label="MOVIES" {...a11yProps(0)} />
+              <Tab label="SEARCH RESULTS" {...a11yProps(1)} />
+              <Tab label="TV SHOWS" {...a11yProps(2)} />
+            </Tabs>
+          </AppBar>
+          <TabPanel value={this.state.value} index={0}>
+            <MoviesContainer category={"now_playing"} />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={1}>
+            <SearchResultContainer 
+              ref={this.searchResultRef} 
+              search_results={this.state.search_results}
+            />
+          </TabPanel>
+          <TabPanel value={this.state.value} index={2}>
+            <TVShowsContainer category={"airing_today"} />
+          </TabPanel>
+        </div>
       </div>
     )
   }

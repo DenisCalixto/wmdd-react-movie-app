@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/styles'
 import { POSTER_IMAGE_BASE_URL } from '../config/api_config'
 
-import MovieCard from './MovieCard'
+import ShowCard from './ShowCard'
 
 const getStyles = makeStyles(theme => ({
   root: {
@@ -20,8 +20,8 @@ const Movies = (props) => {
         {props.movies.map(movie => {
           const { id, title, release_date, popularity, overview, poster_path } = movie
           return (
-            <Grid item xs={5}>
-              <MovieCard
+            <Grid item xs={12}>
+              <ShowCard
                 key={id}
                 id={id}
                 title={title}

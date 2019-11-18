@@ -4,7 +4,8 @@ import Shows from '../components/Shows'
 
 class SearchResultContainer extends Component {
   state = {
-    search_results: null
+    search_results: null,
+    message: "Please enter a search"
   }
 
   updateSearchResults = (searchResults) => {
@@ -14,9 +15,23 @@ class SearchResultContainer extends Component {
     })
   }
 
+  resetResultsMessage = () => {
+    this.setState({
+      message: "Please enter a search"
+    })
+    //this.message = "Please enter a search"
+  }
+
+  showInTypingMessage = () => {
+    this.setState({
+      message: "Please initiate a search"
+    })
+    //this.message = "Please initiate a search"
+  }
+
   render() {
       //console.log(this.state.search_results)
-    const { search_results } = this.state;
+    const { search_results, message } = this.state;
     
     if (search_results) {
       if (search_results.length > 0) {
@@ -37,7 +52,7 @@ class SearchResultContainer extends Component {
     else {
       return (
         <div>
-          <p>Please initiate a search</p>
+          <p>{message}</p>
         </div>
       );
     }

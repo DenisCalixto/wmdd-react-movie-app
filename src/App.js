@@ -53,9 +53,6 @@ class App extends Component {
 
   constructor(props) {
      super(props);
-    //  this.state = {
-    //    search_results: []
-    //  }
      this.searchResultRef = React.createRef()
   }
 
@@ -82,16 +79,14 @@ class App extends Component {
   }
 
   handleSearchText = (key, value) => {
-    // this.setState({
-    //   [key]: value
-    // })
     this.searchText = value
+    if (this.searchText !== "")
+      this.searchResultRef.current.showInTypingMessage()
+    else
+      this.searchResultRef.current.resetResultsMessage()
   }
   
   handleCategoryChange = (key, value) => {
-    // this.setState({
-      //   [key]: value
-      // })
     this.search_category = value
   }
 

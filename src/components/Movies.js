@@ -20,7 +20,7 @@ const Movies = (props) => {
         {props.movies.map(movie => {
           const { id, title, release_date, popularity, overview, poster_path } = movie
           return (
-            <Grid item xs={3}>
+            <Grid item xs={5}>
               <MovieCard
                 key={id}
                 id={id}

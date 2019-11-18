@@ -10,11 +10,11 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles(theme => ({
   textField: {
     display: 'flex',
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     width: '40%'
   },
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing(1)
   }
 }))
 
@@ -34,7 +34,7 @@ const SearchForm = (props) => {
         variant='outlined'
         InputLabelProps={{
           required: true,
-          color: 'white',
+          primary: 'white',
           shrink: true
         }}
       />
@@ -46,6 +46,7 @@ const SearchForm = (props) => {
           <Select
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
+            defaultValue="movie"
             onChange={e => onChangeCategory('category', e.target.value)}
           >
             <MenuItem value={'movie'}>movie</MenuItem>

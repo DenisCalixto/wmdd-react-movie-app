@@ -66,16 +66,19 @@ class App extends Component {
   handleSearch = () => {
     // console.log(this.category)
     // console.log(this.searchText)
-    searchContent(this.search_category, this.searchText).then(searchResponse => {
-      this.setState({
-        search_results: searchResponse
+    if (this.searchText !== "") {
+      searchContent(this.search_category, this.searchText).then(searchResponse => {
+        //console.log(searchResponse)
+        this.setState({
+          search_results: searchResponse
+        })
+        // console.log(this.state.search_results)
+        this.searchResultRef.current.updateSearchResults(this.state.search_results)
+        this.setState({
+          value: 1
+        })
       })
-      // console.log(this.state.search_results)
-      this.searchResultRef.current.updateSearchResults(this.state.search_results)
-      this.setState({
-        value: 1
-      })
-    })
+    }
   }
 
   handleSearchText = (key, value) => {
@@ -122,7 +125,7 @@ class App extends Component {
           <TabPanel value={this.state.value} index={1}>
             <SearchResultContainer 
               ref={this.searchResultRef} 
-              search_results={this.state.search_results}
+              shows={this.state.search_results}
             />
           </TabPanel>
           <TabPanel value={this.state.value} index={2}>

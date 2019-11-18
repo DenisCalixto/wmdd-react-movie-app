@@ -1,23 +1,11 @@
 import React, { Component } from 'react'
-
-import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import { getTVShows } from '../services/api'
-import TVShows from '../components/TVShows'
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import Shows from '../components/Shows'
 
 class TVShowsContainer extends Component {
   state = {
@@ -44,7 +32,9 @@ class TVShowsContainer extends Component {
   }
 
   handleChange = event => {
-    this.state.category = event.target.value
+    this.setState({
+      category: event.target.value
+    })
     this.fetchData(event.target.value)
   };
 
@@ -70,7 +60,7 @@ class TVShowsContainer extends Component {
           </Select>
         </FormControl>
         {/* send to the stateless component Movies the list of the recipes returned from the API  */}
-        <TVShows tv_shows={tv_shows} />
+        <Shows shows={tv_shows} />
       </div>
     );
   }

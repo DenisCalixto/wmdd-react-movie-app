@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-
-import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import { getMovies } from '../services/api'
-import Movies from '../components/Movies'
+import Shows from '../components/Shows'
 
 class MoviesContainer extends Component {
   state = {
@@ -20,27 +18,9 @@ class MoviesContainer extends Component {
     this.state.category = props.category;
   }
 
-  useStyles = makeStyles(theme => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-    inputLabel: {
-      color: 'red',
-      backgroundColor: 'white',
-    },
-  }));
-
   componentDidMount() {
     const { category } = this.state
     this.fetchData(category)
-  }
-
-  componentWillMount() {
-    console.log('categories: ' + this.category)
   }
 
   fetchData = (category) => {
@@ -52,7 +32,9 @@ class MoviesContainer extends Component {
   }
 
   handleChange = event => {
-    this.state.category = event.target.value
+    this.setState({
+      category: event.target.value
+    })
     this.fetchData(event.target.value)
   };
 
@@ -61,9 +43,7 @@ class MoviesContainer extends Component {
     return (
       <div>
         <FormControl variant="outlined">
-          <InputLabel 
-            shrink id="categoryLabelId"
-            className={this.useStyles.inputLabel}>
+          <InputLabel shrink id="categoryLabelId">
             Category
           </InputLabel>
           <Select
@@ -80,7 +60,7 @@ class MoviesContainer extends Component {
           </Select>
         </FormControl>
         {/* send to the stateless component Movies the list of the recipes returned from the API  */}
-        <Movies movies={movies} />
+        <Shows shows={movies} />
       </div>
     );
   }

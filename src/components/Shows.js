@@ -11,24 +11,24 @@ const getStyles = makeStyles(theme => ({
   }
 }))
 
-const TVShows = (props) => {
+const Shows = (props) => {
   const classes = getStyles()
   //Grid is a Material UI class
   return (
     <div className='container'>
       <Grid container className={classes.root} spacing={5}>
-        {props.tv_shows.map(tv_show => {
-          const { id, name, first_air_date, popularity, overview, poster_path } = tv_show
+        {props.shows.map(show => {
+          const { id, title, date, popularity, overview, poster } = show
           return (
             <Grid item xs={12}>
               <ShowCard
                 key={id}
                 id={id}
-                title={name}
-                release_date={first_air_date}
+                title={title}
                 popularity={popularity}
                 overview={overview}
-                poster_path={POSTER_IMAGE_BASE_URL + poster_path}
+                poster_path={POSTER_IMAGE_BASE_URL + poster}
+                release_date={date}
               />
             </Grid>
           )
@@ -38,4 +38,4 @@ const TVShows = (props) => {
   )
 }
 
-export default TVShows
+export default Shows

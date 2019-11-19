@@ -12,8 +12,8 @@ const getStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   media: {
-    height: '450px',
-    width: '300px',
+    height: 'auto',
+    width: '20%',
   },
   content: {
     flexBasis: '70%',

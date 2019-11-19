@@ -4,18 +4,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import { getMovies } from '../services/api'
+import { getShows } from '../services/api'
 import Shows from '../components/Shows'
 
-class MoviesContainer extends Component {
+class ShowsContainer extends Component {
   state = {
-    movies: [],
-    category: ""
+    shows: [],
+    api_url: "",
+    category: "",
+    categories: []
   }
 
   constructor(props) {
     super(props);
     this.state.category = props.category;
+    this.state.api_url = props.api_url;
+    this.state.categories = props.categories;
   }
 
   componentDidMount() {
@@ -24,9 +28,9 @@ class MoviesContainer extends Component {
   }
 
   fetchData = (category) => {
-    getMovies(category).then(moviesResponse => {
+    getShows(category, this.state.api_url).then(showsResponse => {
       this.setState({
-        movies: moviesResponse
+        shows: showsResponse
       })
     })
   }
@@ -39,7 +43,7 @@ class MoviesContainer extends Component {
   };
 
   render() {
-    const { movies } = this.state
+    const { shows } = this.state
     return (
       <div>
         <FormControl variant="outlined">
@@ -53,17 +57,18 @@ class MoviesContainer extends Component {
             onChange={this.handleChange}
             className='combo'
           >
-            <MenuItem value={'now_playing'}>now_playing</MenuItem>
-            <MenuItem value={'popular'}>popular</MenuItem>
-            <MenuItem value={'top_rated'}>top_rated</MenuItem>
-            <MenuItem value={'upcoming'}>upcoming</MenuItem>
+          {this.state.categories.map(category => {
+            return (
+              <MenuItem value={category}>{category}</MenuItem>
+            )
+          })}
           </Select>
         </FormControl>
         {/* send to the stateless component Movies the list of the recipes returned from the API  */}
-        <Shows shows={movies} />
+        <Shows shows={shows} />
       </div>
     );
   }
 }
 
-export default MoviesContainer
+export default ShowsContainer

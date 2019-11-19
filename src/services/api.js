@@ -1,49 +1,16 @@
 import axios from 'axios'
 import Show from '../classes/Show'
 
-import { MOVIES_URL, TV_SHOWS_URL, SEARCH_URL } from '../config/api_config'
+import { SEARCH_URL } from '../config/api_config'
 
-export const getMovies = async (category) => {
-  const url = MOVIES_URL.replace("{CATEGORY}",category)
-  // console.log(url)
-
-  try {
-    const response = await axios.get(url)
-    // console.log(response)
-    return response.data.results.map(result => {
-      return new Show(
-        result.id,
-        result.title,
-        result.release_date,
-        result.popularity,
-        result.overview,
-        result.poster_path
-      )
-    })
-    //return response.data.results
-  } catch (error) {
-    throw error
-  }
-}
-
-export const getTVShows = async (category) => {
-  const url = TV_SHOWS_URL.replace("{CATEGORY}",category)
-  // console.log(url)
+export const getShows = async (category, apiUrl) => {
+  const url = apiUrl.replace("{CATEGORY}",category)
 
   try {
     const response = await axios.get(url)
-    //console.log(response)
     return response.data.results.map(result => {
-      return new Show(
-        result.id,
-        result.name,
-        result.first_air_date,
-        result.popularity,
-        result.overview,
-        result.poster_path
-      )
+      return mapShow(result)
     })
-    //return response.data.results
   } catch (error) {
     throw error
   }
@@ -51,23 +18,32 @@ export const getTVShows = async (category) => {
 
 export const searchContent = async (category, searchText) => {
   const url = SEARCH_URL.replace("{CATEGORY}",category).replace("{SEARCH_TEXT}",searchText)
-  // console.log(url)
 
   try {
     const response = await axios.get(url)
-    //console.log(response)
     return response.data.results.map(result => {
-      return new Show(
-        result.id,
-        result.title,
-        result.release_date,
-        result.popularity,
-        result.overview,
-        result.poster_path
-      )
+      return mapShow(result)
     })
-    //return response.data.results
   } catch (error) {
     throw error
+  }  
+}
+
+const mapShow = (result) => {
+  let show = new Show()
+  show.id = result.id
+  show.popularity = result.popularity
+  show.overview = result.overview
+  show.poster = result.poster_path
+  if (result.name) {
+    show.title = result.name
+  } else {
+    show.title = result.title
   }
+  if (result.first_air_date) {
+    show.date = result.first_air_date
+  } else {
+    show.date = result.release_date
+  }
+  return show
 }

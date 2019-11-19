@@ -1,47 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 
 import SearchResultContainer from '../containers/SearchResultContainer';
 import ShowsContainer from '../containers/ShowsContainer'
 import SearchForm from '../components/SearchForm';
+import { TabPanel, a11yProps } from '../components/TabPanel';
 import { searchContent } from '../services/api'
 
 import { MOVIES_URL, TV_SHOWS_URL } from '../config/api_config'
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      <Box p={3}>{children}</Box>
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
 
 class TabsContainer extends Component {
   state = {
